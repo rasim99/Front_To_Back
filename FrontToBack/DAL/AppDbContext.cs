@@ -13,6 +13,8 @@ namespace FrontToBack.DAL
        public  DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+
 
     }
 }

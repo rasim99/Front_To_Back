@@ -24,6 +24,7 @@ namespace FrontToBack.Controllers
             homeVM.SliderContent = _appDbContext.SliderContents.FirstOrDefault();
             homeVM.Categories = _appDbContext.Categories.ToList();
             homeVM.Products = _appDbContext.Products.Include(p => p.Images).ToList();
+            homeVM.Blogs = _appDbContext.Blogs.ToList();
             return View(homeVM);
         }
 
