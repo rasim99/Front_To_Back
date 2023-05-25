@@ -25,6 +25,10 @@ namespace FrontToBack.Controllers
             homeVM.Categories = _appDbContext.Categories.ToList();
             homeVM.Products = _appDbContext.Products.Include(p => p.Images).ToList();
             homeVM.Blogs = _appDbContext.Blogs.ToList();
+            homeVM.Expert = _appDbContext.Experts.FirstOrDefault();
+            homeVM.ExpertContents = _appDbContext.ExpertContents.ToList();
+            homeVM.Says = _appDbContext.Says.ToList();
+            homeVM.Instagrams = _appDbContext.Instagrams.ToList();
             return View(homeVM);
         }
 
