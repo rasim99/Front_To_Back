@@ -1,4 +1,16 @@
 $(document).ready(function () {
+   //loadMore
+    $(document).on("click", "#loadMore", function () {
+        $.ajax({
+            method: "Get",
+            url: "https://jsonplaceholder.typicode.com/posts",
+            success: function (res)
+            {
+                console.log(res)
+            }
+        })
+    })
+
 
     // HEADER
 
