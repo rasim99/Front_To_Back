@@ -1,12 +1,20 @@
 $(document).ready(function () {
    //loadMore
+    let skip = 2
+    let proCount = $("#productCount").val()
     $(document).on("click", "#loadMore", function () {
+
         $.ajax({
             method: "Get",
-            url: "https://jsonplaceholder.typicode.com/posts",
+            url: "/product/loadMore?skip="+skip,
             success: function (res)
             {
-                console.log(res)
+                $("#productlist").append(res)
+                skip += 2
+                if (skip>=proCount)
+                {
+                    $("#loadMore").remove()
+                }
             }
         })
     })

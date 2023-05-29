@@ -6,10 +6,12 @@
  <!-- PRODUCTS START -->
 
         <section id="products">
+                 <input type="hidden" id="productCount" value="@ViewBag.ProductCount" /> 
+
             <div class="container">
                 <div class="row pt-5">
 
-            <div class="row">
+            <div class="row" id="productlist">
 
                 @foreach (var item in Model)
                 {
