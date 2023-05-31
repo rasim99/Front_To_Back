@@ -13,8 +13,9 @@
 
             <div class="row" id="productlist">
 
-            @Html.Partial("_LoadMorePartial",Model);
-
+            @*@Html.Partial("_LoadMorePartial",Model); *@
+          
+                @await Component.InvokeAsync("Product",2)
 
             </div>
                     

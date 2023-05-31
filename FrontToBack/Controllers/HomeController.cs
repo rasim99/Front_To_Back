@@ -23,7 +23,7 @@ namespace FrontToBack.Controllers
             homeVM.Sliders = _appDbContext.Sliders.ToList();
             homeVM.SliderContent = _appDbContext.SliderContents.FirstOrDefault();
             homeVM.Categories = _appDbContext.Categories.ToList();
-            homeVM.Products = _appDbContext.Products.Include(p => p.Images).Take(4).ToList();
+            //homeVM.Products = _appDbContext.Products.Include(p => p.Images).Take(4).ToList();
             homeVM.Blogs = _appDbContext.Blogs.ToList();
             homeVM.Expert = _appDbContext.Experts.FirstOrDefault();
             homeVM.ExpertContents = _appDbContext.ExpertContents.ToList();
