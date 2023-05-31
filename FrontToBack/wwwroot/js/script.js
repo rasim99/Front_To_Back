@@ -3,7 +3,7 @@ $(document).ready(function () {
     let skip = 2
     let proCount = $("#productCount").val()
     $(document).on("click", "#loadMore", function () {
-
+   
         $.ajax({
             method: "Get",
             url: "/product/loadMore?skip="+skip,
@@ -19,6 +19,22 @@ $(document).ready(function () {
         })
     })
 
+    ///search
+    $(document).on("keyup", "#input-search", function () {
+        $("#search-list li").slice(1).remove()
+        var search = $("#input-search").val().trim();
+        if (search.length > 0) {
+
+            $.ajax({
+                method: "Get",
+                url: "Product/Search?search="+search,
+                success: function (res) {
+                    $("#search-list").append(res)
+                }
+            })
+        }
+        
+    })
 
     // HEADER
 

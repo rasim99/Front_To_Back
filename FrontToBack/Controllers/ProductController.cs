@@ -16,12 +16,18 @@ namespace FrontToBack.Controllers
 
         public IActionResult Index()
         {
-            var products = _appDbContext.Products
-                .Include(p=>p.Category)
-                .Include(p => p.Images)
-                .Take(2)
-                .ToList();
-            ViewBag.ProductCount = _appDbContext.Products.Count();
+
+            var query = _appDbContext.Products.AsQueryable();
+            var products=query.Include(p => p.Category)
+            .Include(p => p.Images)
+            .Take(2)
+            .ToList();
+            //var products = _appDbContext.Products
+            //    .Include(p=>p.Category)
+            //    .Include(p => p.Images)
+            //    .Take(2)
+            //    .ToList();
+            ViewBag.ProductCount = query.Count();
             return View(products);
         }
         public IActionResult loadMore( int skip)
@@ -60,6 +66,17 @@ namespace FrontToBack.Controllers
                 .Take(2)
                 .ToList();
             return PartialView("_LoadMorePartial", products);
+        }
+
+        public IActionResult Search(string search)
+        {
+            var products = _appDbContext.Products
+                .Where(p => p.Name.ToLower().Contains(search.ToLower()))
+                .Take(2)
+                .OrderByDescending(p=>p.Id)
+                .ToList();
+
+            return PartialView("_SearchPartial", products);
         }
     }
 }
