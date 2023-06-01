@@ -1,12 +1,13 @@
-﻿
+﻿@using FrontToBack.Sevices;
+
 @{
     ViewData["Title"] = "Index";
 }
-
    
 @model HomeVM
+@inject ISum sum
         <!-- SLIDER START -->
-
+       <h2>@sum.Sum(20,30)</h2>
         <section id="slider">
             <div class="owl-carousel slider">
                                         @foreach(var item in Model.Sliders )
