@@ -19,6 +19,8 @@ namespace FrontToBack.DAL
         public DbSet<ExpertContent> ExpertContents { get; set; }
         public DbSet<Say> Says { get; set; }
         public DbSet<Instagram> Instagrams { get; set; }
+        public DbSet<Bio> Bios { get; set; }
+
 
     }
 }
