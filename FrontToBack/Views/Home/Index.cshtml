@@ -5,9 +5,9 @@
 }
    
 @model HomeVM
-@inject ISum sum
+
         <!-- SLIDER START -->
-       <h2>@sum.Sum(20,30)</h2>
+   
         <section id="slider">
             <div class="owl-carousel slider">
                                         @foreach(var item in Model.Sliders )
@@ -70,7 +70,7 @@
                 </div>
                 <div class="row">
                   
-                   @await Component.InvokeAsync("Product",4);
+                   @await Component.InvokeAsync("Product",4)
 
 
                 </div>
