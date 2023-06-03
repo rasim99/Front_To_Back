@@ -15,6 +15,10 @@ namespace FrontToBack
             });
             services.AddScoped<ISum, SumService>();
             services.AddScoped<AccountService>(a => new AccountService());
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+            });
         }
     }
 }
