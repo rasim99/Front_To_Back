@@ -2,6 +2,7 @@
 using FrontToBack.Models;
 using FrontToBack.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace FrontToBack.Controllers
@@ -22,7 +23,9 @@ namespace FrontToBack.Controllers
          public IActionResult AddBasket(int ?id)
         {
             if (id == null) return NotFound();
-            var product = _appDbContext.Products.Find(id);
+            var product = _appDbContext.Products
+                .Include(p=>p.Images)
+                .FirstOrDefault(p=>p.Id==id);
             if (product == null) return NotFound();
             var basket = Request.Cookies["basket"];
             List<BasketVM> products;
@@ -40,7 +43,6 @@ namespace FrontToBack.Controllers
                 BasketVM basketVM = new BasketVM()
                 {
                     Id = product.Id,
-                    Name = product.Name,
                     BasketCount=1
                 };
                 products.Add(basketVM);
@@ -52,13 +54,31 @@ namespace FrontToBack.Controllers
             }
          
             Response.Cookies.Append("basket", JsonConvert.SerializeObject(products), new CookieOptions { MaxAge = TimeSpan.FromMinutes(10) });
-            return Content($" {product.Name} set olundu");
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult ShowBasket()
         {
             var basket = Request.Cookies["basket"];
-            var result=JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-            return Json(result);
+            List<BasketVM> products;
+            if (basket == null)
+            {
+                products = new List<BasketVM>();
+            }
+            else
+            {
+                 products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+                foreach(var item in products)
+                {
+                    Product existProduct = _appDbContext.Products
+                        .Include(p=>p.Images)
+                        .FirstOrDefault(p => p.Id == item.Id);
+                    item.Name = existProduct.Name;
+                    item.Price = existProduct.Price;
+                    item.ImageUrl = existProduct.Images.FirstOrDefault().ImageUrl;
+                }
+            }
+           
+            return View(products);
         }
     }
 }
