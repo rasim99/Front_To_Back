@@ -23,35 +23,9 @@ namespace FrontToBack.Controllers
          public IActionResult AddBasket(int ?id)
         {
             if (id == null) return NotFound();
-            var product = _appDbContext.Products
-                .Include(p=>p.Images)
-                .FirstOrDefault(p=>p.Id==id);
+            var product = GetProduct(id);
             if (product == null) return NotFound();
-            var basket = Request.Cookies["basket"];
-            List<BasketVM> products;
-            if(basket == null)
-            {
-                 products= new List<BasketVM>();
-            }
-            else
-            {
-                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-            }
-            var existProduct = products.Find(x => x.Id == product.Id);
-            if (existProduct == null)
-            {
-                BasketVM basketVM = new BasketVM()
-                {
-                    Id = product.Id,
-                    BasketCount=1
-                };
-                products.Add(basketVM);
-
-            }
-            else
-            {
-                existProduct.BasketCount++;
-            }
+            var products = CheckProductInBasket(product);
          
             Response.Cookies.Append("basket", JsonConvert.SerializeObject(products), new CookieOptions { MaxAge = TimeSpan.FromMinutes(10) });
             return RedirectToAction("Index", "Home");
@@ -80,5 +54,44 @@ namespace FrontToBack.Controllers
            
             return View(products);
         }
+        private Product GetProduct(int ?id)
+        {
+            var product = _appDbContext.Products
+                .Include(p => p.Images)
+               .FirstOrDefault(p => p.Id == id);
+            return product;
+        }
+
+        private List<BasketVM> CheckProductInBasket(Product product)
+        {
+            List<BasketVM> products;
+            var basket = Request.Cookies["basket"];
+            if (basket == null)
+            {
+                products = new List<BasketVM>();
+            }
+            else
+            {
+                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            }
+            var existProduct = products.Find(x => x.Id == product.Id);
+            if (existProduct == null)
+            {
+                BasketVM basketVM = new BasketVM()
+                {
+                    Id = product.Id,
+                    BasketCount = 1
+                };
+                products.Add(basketVM);
+
+            }
+            else
+            {
+                existProduct.BasketCount++;
+            }
+            return products;
+        }
+         
+    
     }
 }

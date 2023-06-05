@@ -1,5 +1,8 @@
 ﻿   @model Bio
-
+      @inject IBasketService basketservice;
+@{
+    int count = basketservice.BasketCount();
+}
     <header>
         <div class="container">
             <div class="row">
@@ -145,7 +148,7 @@
                                  <i class="fas fa-shopping-bag"></i>
                                 </a>
                                    
-                                    <sup class="rounded-circle">@ViewBag.BasketCount</sup>
+                                    <sup class="rounded-circle">@count </sup>
                                     <span>CART ($0)</span>
                                     <ul class="list-unstyled py-3">
                                         <li class="">No products in the cart.</li>

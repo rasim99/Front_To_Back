@@ -16,13 +16,13 @@ namespace FrontToBack.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            string basket = Request.Cookies["basket"];
-            ViewBag.BasketCount = 0;
-            if (basket != null)
-            {
-                var products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-                ViewBag.BasketCount = products.Count;
-            }
+            //string basket = Request.Cookies["basket"];
+            //ViewBag.BasketCount = 0;
+            //if (basket != null)
+            //{
+            //    var products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            //    ViewBag.BasketCount = products.Count;
+            //}
             var bio = _appDbContext.Bios.FirstOrDefault();
             return View(await Task.FromResult(bio));
         }

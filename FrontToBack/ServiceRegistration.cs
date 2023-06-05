@@ -19,6 +19,8 @@ namespace FrontToBack
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(1);
             });
+            services.AddHttpContextAccessor();
+            services.AddScoped<IBasketService , BasketService > ();
         }
     }
 }

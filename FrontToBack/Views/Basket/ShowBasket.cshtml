@@ -1,6 +1,9 @@
 ﻿@model List<BasketVM>
 @{
     ViewData["Title"] = "ShowBasket";
+    //  double TotalPrice = 0;
+    double TotalPrice = Model.Sum(p => p.BasketCount * p.Price);
+
 }
 <div class="container">
 
@@ -20,6 +23,7 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
+                       // TotalPrice += item.BasketCount * item.Price;
                         <tr>
                             <th scope="row">
                                  <img src="~/img/@item.ImageUrl" width="150" height="150"/>
@@ -33,6 +37,11 @@
 
                 </tbody>
             </table>
+                                        <div class="container">
+                                                         <div class="row" >
+                                                           TotalPrice : @TotalPrice
+                                                        </div>
+                                          </div>
         }
         else
         {
