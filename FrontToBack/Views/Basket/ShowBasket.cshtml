@@ -16,6 +16,7 @@
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
+                        <th scope="col"></th>
                         <th scope="col">BasketCount</th>
                         <th scope="col">Settings</th>
                     </tr>
@@ -30,8 +31,16 @@
                               </th>
                             <td>@item.Name</td>
                             <td>@item.Price</td>
+                              <td>
+                                <a asp-controller="basket" asp-action="decrementproduct" asp-route-id="@item.Id">-</a>
+                               </td>
                             <td>@item.BasketCount</td>
-                            <td>X</td>
+                                      <td>
+                                    <a asp-controller="basket" asp-action="Incrementproduct" asp-route-id="@item.Id">+</a>
+                               </td>
+                                    <td>
+                                          <a asp-controller="basket" asp-action="delete" asp-route-id="@item.Id" class="text-danger"> X  </a>
+                                     </td>
                         </tr>
                     }
 

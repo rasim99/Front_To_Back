@@ -54,6 +54,48 @@ namespace FrontToBack.Controllers
            
             return View(products);
         }
+      public IActionResult Delete(int ?id)
+        {
+            if (id == null) return NotFound();
+            string basket = Request.Cookies["basket"];
+            var products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            var exisProduct = products.Find(pro => pro.Id == id);
+            products.Remove(exisProduct);
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(products), new CookieOptions { MaxAge = TimeSpan.FromMinutes(10) });
+            return RedirectToAction(nameof(ShowBasket));
+        }
+        
+        public IActionResult IncrementProduct(int? id)
+        {
+            if (id == null) return NotFound();
+            string basket = Request.Cookies["basket"];
+            var products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            var existProduct = products.Find(e => e.Id == id);
+            existProduct.BasketCount++;
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(products), new CookieOptions { MaxAge = TimeSpan.FromMinutes(10) });
+            return RedirectToAction(nameof(ShowBasket));
+        }
+       public IActionResult Decrementproduct(int? id)
+        {
+            if (id == null) return NotFound();
+            string basket = Request.Cookies["basket"];
+            var products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            var existProduct = products.Find(p => p.Id == id);
+            if (existProduct.BasketCount>=1)
+            {
+                existProduct.BasketCount -= 1;
+            }
+            if (existProduct.BasketCount==0) 
+
+
+            {
+                products.Remove(existProduct);
+            }
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(products), new CookieOptions { MaxAge = TimeSpan.FromMinutes(10) });
+            return RedirectToAction(nameof(ShowBasket));
+        }
+
+
         private Product GetProduct(int ?id)
         {
             var product = _appDbContext.Products
@@ -61,7 +103,6 @@ namespace FrontToBack.Controllers
                .FirstOrDefault(p => p.Id == id);
             return product;
         }
-
         private List<BasketVM> CheckProductInBasket(Product product)
         {
             List<BasketVM> products;
