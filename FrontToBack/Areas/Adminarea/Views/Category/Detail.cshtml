@@ -1,0 +1,16 @@
+﻿@model Category
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Category  Detail</h4>
+               
+                <p>
+                       @Model.Desc 
+                </p>
+            </div>
+        </div>
+    </div>
+   <a asp-controller="category" asp-action="index" class="btn btn-warning ">BACK</a>
+</div>
+
