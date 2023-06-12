@@ -37,12 +37,18 @@ namespace FrontToBack.Areas.Adminarea.Controllers
         public IActionResult Create( CategoryVM categoryVM )
         {
             if (!ModelState.IsValid) return View();
+            var exist= _appDbContext.Categories.Any(c => c.Name.ToLower() == categoryVM.Name.ToLower());
+            if (exist)
+            {
+                ModelState.AddModelError("Name", "eyni adli category vardir");
+                return View();
+            }
             Category newcategory = new();
             newcategory.Name = categoryVM.Name;
             newcategory.Desc = categoryVM.Desc;
             _appDbContext.Categories.Add(newcategory);
             _appDbContext.SaveChanges();
-            return Content(categoryVM.Name + "  " + categoryVM.Desc);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
