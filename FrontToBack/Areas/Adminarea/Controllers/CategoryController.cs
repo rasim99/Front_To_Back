@@ -75,5 +75,15 @@ namespace FrontToBack.Areas.Adminarea.Controllers
             _appDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+   
+         public IActionResult Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
+            if (category == null) return NotFound();
+            _appDbContext.Categories.Remove(category);
+            _appDbContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
