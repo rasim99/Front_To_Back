@@ -50,5 +50,30 @@ namespace FrontToBack.Areas.Adminarea.Controllers
             _appDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Update(int?id)
+        {
+
+            if (id == null) return NotFound();
+            var category = _appDbContext.Categories.FirstOrDefault(i => i.Id == id);
+            if (category == null) return NotFound();
+            return View(new CategoryVM { Name=category.Name , Desc=category.Name});
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Update(int ?id, CategoryVM categoryVM)
+        {
+            if (!ModelState.IsValid) return NotFound();
+            var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
+            var exist = _appDbContext.Categories.Any(c => c.Name.ToLower() == category.Name.ToLower() && c.Id!=id);
+            if (exist)
+            {
+                ModelState.AddModelError("Name", "eyni adli category vardir");
+                return View();
+            }
+            category.Name = categoryVM.Name;
+            category.Desc = categoryVM.Desc;
+            _appDbContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
