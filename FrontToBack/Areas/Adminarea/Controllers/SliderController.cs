@@ -72,6 +72,12 @@ namespace FrontToBack.Areas.Adminarea.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-
+        public IActionResult Detail(int? id)
+        {
+            if (id == null) return NotFound();
+            var slider = _appDbContext.Sliders.FirstOrDefault(i => i.Id == id);
+            if (slider == null) return NotFound();
+            return View(slider);
+        }
     }
 }

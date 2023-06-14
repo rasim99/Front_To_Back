@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cZSdoakjhmXW9P9qRjndSLvnZUX9xzNK2vt526+Zlsk=",
+  "Hash": "pC9Uxw3UVVQtaBh59REHYqXKKqKzqYXSIx2BLhJFXqA=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -2261,23 +2261,6 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css.map"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\61c4dbbb-cd8f-4294-9fa5-5c96d472cb2ablog-feature-img-3.jpg",
-      "SourceId": "FrontToBack",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\",
-      "BasePath": "_content/FrontToBack",
-      "RelativePath": "img/61c4dbbb-cd8f-4294-9fa5-5c96d472cb2ablog-feature-img-3.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\61c4dbbb-cd8f-4294-9fa5-5c96d472cb2ablog-feature-img-3.jpg"
-    },
-    {
       "Identity": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\blog-feature-img-1.jpg",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -2327,23 +2310,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\blog-feature-img-4.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\dc3322c1-83db-4447-8bc3-82ab397deb46h3-background-img.jpg",
-      "SourceId": "FrontToBack",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\",
-      "BasePath": "_content/FrontToBack",
-      "RelativePath": "img/dc3322c1-83db-4447-8bc3-82ab397deb46h3-background-img.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\dc3322c1-83db-4447-8bc3-82ab397deb46h3-background-img.jpg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\favicon.png",
