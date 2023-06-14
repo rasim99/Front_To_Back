@@ -525,6 +525,10 @@
       "PackagePath": "staticwebassets\\css\\style.css.map"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\61c4dbbb-cd8f-4294-9fa5-5c96d472cb2ablog-feature-img-3.jpg",
+      "PackagePath": "staticwebassets\\img\\61c4dbbb-cd8f-4294-9fa5-5c96d472cb2ablog-feature-img-3.jpg"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\blog-feature-img-1.jpg",
       "PackagePath": "staticwebassets\\img\\blog-feature-img-1.jpg"
     },
@@ -535,6 +539,10 @@
     {
       "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\blog-feature-img-4.jpg",
       "PackagePath": "staticwebassets\\img\\blog-feature-img-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\dc3322c1-83db-4447-8bc3-82ab397deb46h3-background-img.jpg",
+      "PackagePath": "staticwebassets\\img\\dc3322c1-83db-4447-8bc3-82ab397deb46h3-background-img.jpg"
     },
     {
       "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\img\\favicon.png",

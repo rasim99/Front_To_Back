@@ -1,4 +1,5 @@
 ﻿using FrontToBack.DAL;
+using FrontToBack.Helper;
 using FrontToBack.Models;
 using FrontToBack.ViewModels.AdminVM.Slider;
 using Microsoft.AspNetCore.Hosting;
@@ -39,28 +40,38 @@ namespace FrontToBack.Areas.Adminarea.Controllers
                 ModelState.AddModelError("Photo", "dont be empty");
                 return View();
             }
-            if (!sliderCreateVM.Photo.ContentType.Contains("image"))
+            if (!sliderCreateVM.Photo.CheckFileType())
             {
                 ModelState.AddModelError("Photo", "Wrong Format");
                 return View();
             }
-            if (sliderCreateVM.Photo.Length < 1000)
+            if (sliderCreateVM.Photo.ChechkFileSize(1000))
             {
                 ModelState.AddModelError("Photo", " Size is small");
                 return View();
             }
-
-            string fileName = Guid.NewGuid() + sliderCreateVM.Photo.FileName;
-            string path = Path.Combine(_webHostEnvironment.WebRootPath, "img", fileName);
-            using (FileStream fileStream=new FileStream(path, FileMode.Create))
-            {
-                sliderCreateVM.Photo.CopyTo(fileStream);
-            }
             Slider slider = new();
-            slider.ImageUrl = fileName;
+            slider.ImageUrl = sliderCreateVM.Photo.SaveImage(_webHostEnvironment,"img");
             _appDbContext.Sliders.Add(slider);
             _appDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            var slider = _appDbContext.Sliders.FirstOrDefault(s => s.Id == id);
+            if(slider==null) return NotFound();
+            string path = Path.Combine(_webHostEnvironment.WebRootPath, "img", slider.ImageUrl);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+
+            _appDbContext.Sliders.Remove(slider);
+            _appDbContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+        }
+
     }
 }
