@@ -85,5 +85,7 @@ namespace FrontToBack.Areas.Adminarea.Controllers
             _appDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+
     }
 }

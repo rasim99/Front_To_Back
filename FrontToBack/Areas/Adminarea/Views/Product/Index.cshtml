@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Adminarea/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model List<Product>
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Product Table</h4>
+                  <a class="btn btn-success" asp-area="Adminarea" asp-controller="Product" asp-action="create">
+                      Add Product
+                  </a>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                       
+                          <th>Img</th>
+                          <th>Name</th>
+                          <th>Price.</th>
+                          <th>Count</th>
+                          <th>CName</th>
+                          <th>Settings</th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                               @foreach (var item in Model)
+                                {
+                                   <tr>
+                                         <td>
+                                            <img  src="~/img/@item.Images.FirstOrDefault(i=>i.IsMain).ImageUrl" />
+                                          </td>
+                                       <td>
+                                                  @item.Name
+                                          </td>   
+                                            <td>
+                                                  @item.Price
+                                          </td>
+                                         <td>
+                                                  @item.Count
+                                          </td>
+                                         <td>
+                                                  @item.Category.Name
+                                          </td>
+                                      <td>
+                                           <a class="btn btn-primary" asp-area="Adminarea" asp-controller="Product" asp-action="update" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-console">UPDATE</i>
+                                                </a>
+                                            <a class="btn btn-danger" asp-area="Adminarea" asp-controller="Product" asp-action="delete" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-delete">DELETE</i>
+                                                </a>
+                                            <a class="btn btn-success" asp-area="Adminarea" asp-controller="Product" asp-action="detail" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-details">DETAILS</i>
+                                                </a>
+                                      </td>
+                                      
+                                   </tr>
+                                }
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>

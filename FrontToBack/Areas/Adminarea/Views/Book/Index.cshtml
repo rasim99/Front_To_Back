@@ -1,0 +1,21 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+@foreach (var book in Model)
+{
+    <p class="text-warning">@book.Name</p>
+    foreach (var item in book.BookGenres)
+    {
+        <span class="text-danger">@item.Genre.Name</span>
+    }
+    <hr  />
+}
+<div class="container">
+     
+         <abbr Title="Create New Book"><a class="btn btn-success " asp-controller="book" asp-action="create">Add Book</a></abbr>
+    
+</div>
+

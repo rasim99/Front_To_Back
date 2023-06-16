@@ -9,5 +9,9 @@
         public double Price { get; set; }
         public Category Category { get; set; }
         public List<Image> Images { get; set; }
+        public Product()
+        {
+            Images = new List<Image>();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FrontToBack.Models;
+using FrontToBack.Models.Practice;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBack.DAL
@@ -20,6 +21,9 @@ namespace FrontToBack.DAL
         public DbSet<Say> Says { get; set; }
         public DbSet<Instagram> Instagrams { get; set; }
         public DbSet<Bio> Bios { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<BookGenre> BookGenres { get; set; }
 
 
     }

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Adminarea/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model ProductUpdateVM 
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Product</h4>
+         
+
+                  @*  <img src="~/img/@ViewBag.FileName" width="250" height="250" />  errrooor   *@  
+ 
+                      
+
+                <form method="post" class="forms-sample" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" class="form-control" placeholder="Price">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Count"></label>
+                        <input asp-for="Count" class="form-control" placeholder="Count">
+                        <span asp-validation-for="Count" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Photos"></label>
+                        <input asp-for="Photos" multiple class="form-control">
+                        <span asp-validation-for="Photos" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-select" asp-for="CategoryId" asp-items="@ViewBag.Category " aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a class="btn btn-light" asp-controller="product" asp-action="index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationPartial"></partial>
+}
+
+
