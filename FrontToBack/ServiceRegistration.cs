@@ -1,5 +1,8 @@
 ﻿using FrontToBack.DAL;
+using FrontToBack.Helper;
+using FrontToBack.Models;
 using FrontToBack.Sevices;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBack
@@ -21,6 +24,21 @@ namespace FrontToBack
             });
             services.AddHttpContextAccessor();
             services.AddScoped<IBasketService , BasketService > ();
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireLowercase=true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = true;
+
+                options.User.RequireUniqueEmail=true;
+                options.Lockout.AllowedForNewUsers=true;
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.DefaultLockoutTimeSpan= TimeSpan.FromMinutes(10);
+            }).AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders()
+            .AddErrorDescriber<CustomIdentityErrorDescriber>();
         }
     }
 }

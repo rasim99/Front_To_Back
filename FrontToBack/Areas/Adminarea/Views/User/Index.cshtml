@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Adminarea/Views/Shared/_AdminLayout.cshtml";
+}
+@model List<AppUser>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">User Table</h4>
+                    <form asp-action="index" >
+                        <input name="name" />
+                        <button>search</button>
+                    </form>
+                    <a class="btn btn-success" asp-area="Adminarea" asp-controller="User" asp-action="create">
+                        Add User
+                    </a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Fullname.</th>
+                                    <th>Settings</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.UserName</td>
+                                        <td>@item.FullName</td>
+                                        <td>
+                                            <a class="btn btn-primary" asp-area="Adminarea" asp-controller="User" asp-action="update" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-console">UPDATE</i>
+                                            </a>
+                                            <a class="btn btn-danger" asp-area="Adminarea" asp-controller="User" asp-action="delete" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-delete">DELETE</i>
+                                            </a>
+                                            <a class="btn btn-success" asp-area="Adminarea" asp-controller="User" asp-action="detail" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-details">DETAILS</i>
+                                            </a>
+                                                @if (User.Identity.Name!=item.UserName)
+                                            {
+                                                                @if (item.IsBlock)
+                                            {
+                                                <a class="btn btn-success" asp-area="Adminarea" asp-controller="User" asp-action="BlockOrActive" asp-route-id="@item.Id">Active</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-danger" asp-area="Adminarea" asp-controller="User" asp-action="BlockOrActive" asp-route-id="@item.Id">Block</a>
+                                            }
+                                            }
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

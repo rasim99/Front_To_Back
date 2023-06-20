@@ -243,3 +243,4 @@ C:\Users\ASUS\Desktop\BACKEND\FrontToBack\FrontToBack\bin\Debug\net6.0\vi\Humani
 C:\Users\ASUS\Desktop\BACKEND\FrontToBack\FrontToBack\bin\Debug\net6.0\zh-CN\Humanizer.resources.dll
 C:\Users\ASUS\Desktop\BACKEND\FrontToBack\FrontToBack\bin\Debug\net6.0\zh-Hans\Humanizer.resources.dll
 C:\Users\ASUS\Desktop\BACKEND\FrontToBack\FrontToBack\bin\Debug\net6.0\zh-Hant\Humanizer.resources.dll
+C:\Users\ASUS\Desktop\BACKEND\FrontToBack\FrontToBack\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
