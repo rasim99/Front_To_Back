@@ -1,0 +1,36 @@
+﻿@{
+	ViewData["Title"] = "Detail";
+	Layout = "~/Areas/Adminarea/Views/Shared/_AdminLayout.cshtml";
+}
+@model RoleUpdateVM
+<div class="row">
+	<div class="col-md-12 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">User  Detail</h4>
+				<p>
+					<span class="text-warning font-weight-bold">UserName :</span>
+					@Model.User.UserName
+				</p>
+				<p>
+					<span class="text-warning font-weight-bold">FullName :</span>
+					@Model.User.FullName
+				</p>
+				<p class="text-warning font-weight-bold">
+					Roles :
+					@foreach (var item in Model.UserRoles)
+					{
+						<span class=" text-success">
+
+							@item
+						</span>
+					}
+
+				</p>
+
+			</div>
+		</div>
+	</div>
+	<a asp-controller="user" asp-action="index" class="btn btn-warning ">BACK</a>
+</div>
+
