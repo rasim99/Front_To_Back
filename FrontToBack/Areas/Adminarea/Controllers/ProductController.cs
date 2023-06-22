@@ -1,6 +1,7 @@
 ﻿ using FrontToBack.DAL;
 using FrontToBack.Helper;
 using FrontToBack.Models;
+using FrontToBack.ViewModels;
 using FrontToBack.ViewModels.AdminVM.Category;
 using FrontToBack.ViewModels.AdminVM.Product;
 using Microsoft.AspNetCore.Mvc;
@@ -21,13 +22,22 @@ namespace FrontToBack.Areas.Adminarea.Controllers
           
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page=1,int take=2)
         {
-            var products = _appDbContext.Products
+            var query=_appDbContext.Products.AsQueryable();
+            var products = query
                 .Include(i => i.Category)
                 .Include(i => i.Images)
+                .Skip((page-1)*take)
+                .Take(take)
                 .ToList();
-            return View(products);
+            var count=query.Count();
+            PaginationVM<Product> paginationVM=new PaginationVM<Product>(products, page, PageCount(count,take));
+            return View(paginationVM);
+        }
+        private int PageCount(int count,int take)
+        {
+            return (int)Math.Ceiling((decimal)count / take);
         }
         public IActionResult Create()
         {

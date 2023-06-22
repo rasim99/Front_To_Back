@@ -721,6 +721,10 @@
       "PackagePath": "staticwebassets\\js\\script.js"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\BACKEND\\FrontToBack\\FrontToBack\\wwwroot\\owlcarousel\\owl.carousel.min.css",
       "PackagePath": "staticwebassets\\owlcarousel\\owl.carousel.min.css"
     },

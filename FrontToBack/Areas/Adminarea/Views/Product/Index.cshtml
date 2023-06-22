@@ -4,7 +4,7 @@
     Layout = "~/Areas/Adminarea/Views/Shared/_AdminLayout.cshtml";
 }
 
-@model List<Product>
+@model PaginationVM<Product>
         <div class="content-wrapper">
           <div class="row">
             <div class="col-12 grid-margin stretch-card">
@@ -29,7 +29,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                               @foreach (var item in Model)
+                               @foreach (var item in Model.Items)
                                 {
                                    <tr>
                                          <td>
@@ -70,3 +70,22 @@
       
           </div>
         </div>
+
+    <div class="row">
+
+    <nav aria-label="...">
+        <ul class="pagination pagination-lg">
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="page-item @(Model.CurrentPage==i?"active":"")" aria-current="page">
+                  <a asp-action="index" asp-route-page="@i">
+                            <span class="page-link">@i</span>
+                  </a>
+                </li>
+            }
+
+        </ul>
+    </nav>
+
+    </div>

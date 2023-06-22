@@ -39,6 +39,7 @@ namespace FrontToBack
             }).AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders()
             .AddErrorDescriber<CustomIdentityErrorDescriber>();
+            services.AddSignalR();
         }
     }
 }

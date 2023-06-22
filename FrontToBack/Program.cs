@@ -1,6 +1,8 @@
 using FrontToBack;
 using FrontToBack.DAL;
+using FrontToBack.Hubs;
 using FrontToBack.Sevices;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,5 +35,5 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+ app.MapHub<ChatHub>("/chat");
 app.Run();
